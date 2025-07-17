@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>Tamamliyo - Başvuru Formu</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <link href="../../src/output.css" rel="stylesheet">
+</head>
+<body class="min-h-screen bg-gray-50">
+<!-- Header -->
+<header class="bg-slate-50 shadow-md">
+    <nav class="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8" aria-label="Global">
+        <div class="flex lg:flex-1">
+            <a href="/"
+               class="group -m-1.5 p-1.5 flex items-center space-x-1 transition-all duration-200 hover:scale-105">
+                <svg class="h-8 w-8 text-indigo-600" fill="none"
+                     viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                          d="M7 21V4a1 1 0 011-1h8a1 1 0 011 1v17M7 21h10M9 14h6M9 10h6" />
+                </svg>
+                <span class="text-xl font-bold text-gray-900 group-hover:text-indigo-600 transition-colors">
+                        tamamliyo
+                    </span>
+            </a>
+        </div>
+        <div class="flex lg:hidden">
+            <button type="button" id="mobile-menu-button"
+                    class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700 hover:bg-gray-200 transition-colors">
+                <span class="sr-only">Ana menüyü aç</span>
+                <svg id="menu-icon" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                     stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                          d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"/>
+                </svg>
+                <svg id="close-icon" class="h-6 w-6 hidden" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                     stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
+                </svg>
+            </button>
+        </div>
+        <div class="hidden lg:flex lg:gap-x-8">
+            <a href="#"
+               class="hover:bg-gray-200 rounded-xl px-3 py-2 text-base font-semibold text-gray-900 transition-colors">
+                Nasıl Çalışır
+            </a>
+            <a href="#"
+               class="hover:bg-gray-200 rounded-xl px-3 py-2 text-base font-semibold text-gray-900 transition-colors">
+                Çözümler
+            </a>
+            <a href="#"
+               class="hover:bg-gray-200 rounded-xl px-3 py-2 text-base font-semibold text-gray-900 transition-colors">
+                Ürünler
+            </a>
+            <a href="#"
+               class="hover:bg-gray-200 rounded-xl px-3 py-2 text-base font-semibold text-gray-900 transition-colors">
+                Hakkımızda
+            </a>
+        </div>
+
+        <div class="hidden lg:flex lg:flex-1 lg:justify-end space-x-4">
+            <div class="relative inline-block text-left">
+                <button type="button" id="basvur-button"
+                        class="inline-flex items-center justify-center bg-indigo-600 hover:bg-indigo-700 rounded-xl transition-colors duration-200 px-6 py-2 text-sm font-semibold text-white">
+                    Başvur
+                    <svg class="-mr-1 h-5 w-5 text-white ml-2" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                        <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.25 4.25a.75.75 0 01-1.06 0L5.23 8.29a.75.75 0 01.02-1.06z" clip-rule="evenodd" />
+                    </svg>
+                </button>
+                <div id="basvur-dropdown"
+                     class="absolute left-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none hidden z-10"
+                     role="menu" aria-orientation="vertical" aria-labelledby="basvur-button" tabindex="-1">
+                    <div class="py-1" role="none">
+                        <a href="/partners/basvur"
+                           class="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-200" role="menuitem" tabindex="-1" id="menu-item-0">
+                            Partner Başvuru
+                        </a>
+                        <a href="/ortaks/basvur"
+                           class="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-200" role="menuitem" tabindex="-1" id="menu-item-1">
+                            Ortak Başvuru
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="relative inline-block text-left">
+                <button type="button" id="giris-button"
+                        class="inline-flex items-center justify-center hover:bg-gray-200 rounded-xl transition-colors duration-200 px-4 py-2 text-sm font-semibold text-gray-900">
+                    Giriş
+                    <svg class="-mr-1 h-5 w-5 text-gray-900 ml-2" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                        <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.25 4.25a.75.75 0 01-1.06 0L5.23 8.29a.75.75 0 01.02-1.06z" clip-rule="evenodd" />
+                    </svg>
+                </button>
+                <div id="giris-dropdown"
+                     class="absolute left-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none hidden z-10"
+                     role="menu" aria-orientation="vertical" aria-labelledby="giris-button" tabindex="-1">
+                    <div class="py-1" role="none">
+                        <a href="/partners/login"
+                           class="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-200" role="menuitem" tabindex="-1" id="menu-item-2">
+                            Partner Girişi
+                        </a>
+                        <a href="/ortaks/login"
+                           class="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-200" role="menuitem" tabindex="-1" id="menu-item-3">
+                            Ortak Girişi
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div id="mobile-menu" class="lg:hidden bg-white border-t border-gray-200 hidden">
+        <div class="px-6 py-4 space-y-2">
+            <a href="#" class="block rounded-lg px-3 py-2 text-base font-semibold text-gray-900 hover:bg-gray-100">
+                Nasıl Çalışır
+            </a>
+            <a href="#" class="block rounded-lg px-3 py-2 text-base font-semibold text-gray-900 hover:bg-gray-100">
+                Çözümler
+            </a>
+            <a href="#" class="block rounded-lg px-3 py-2 text-base font-semibold text-gray-900 hover:bg-gray-100">
+                Ürünler
+            </a>
+            <a href="#" class="block rounded-lg px-3 py-2 text-base font-semibold text-gray-900 hover:bg-gray-100">
+                Hakkımızda
+            </a>
+            <div class="pt-4 space-y-2">
+                <div class="relative inline-block text-left w-full">
+                    <button type="button" id="mobile-basvur-button"
+                            class="inline-flex items-center justify-center w-full bg-indigo-600 hover:bg-indigo-700 rounded-xl transition-colors duration-200 px-6 py-2 text-sm font-semibold text-white">
+                        Başvur
+                        <svg class="-mr-1 h-5 w-5 text-white ml-2" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                            <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.25 4.25a.75.75 0 01-1.06 0L5.23 8.29a.75.75 0 01.02-1.06z" clip-rule="evenodd" />
+                        </svg>
+                    </button>
+                    <div id="mobile-basvur-dropdown"
+                         class="absolute left-0 mt-2 w-full rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none hidden z-10"
+                         role="menu" aria-orientation="vertical" aria-labelledby="mobile-basvur-button" tabindex="-1">
+                        <div class="py-1" role="none">
+                            <a href="/partners/basvur"
+                               class="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-200" role="menuitem" tabindex="-1">
+                                Partner Başvuru
+                            </a>
+                            <a href="/ortaks/basvur"
+                               class="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-200" role="menuitem" tabindex="-1">
+                                Ortak Başvuru
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="relative inline-block text-left w-full">
+                    <button type="button" id="mobile-giris-button"
+                            class="inline-flex items-center justify-center w-full hover:bg-gray-200 rounded-xl transition-colors duration-200 px-4 py-2 text-sm font-semibold text-gray-900">
+                        Giriş
+                        <svg class="-mr-1 h-5 w-5 text-gray-900 ml-2" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                            <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.25 4.25a.75.75 0 01-1.06 0L5.23 8.29a.75.75 0 01.02-1.06z" clip-rule="evenodd" />
+                        </svg>
+                    </button>
+                    <div id="mobile-giris-dropdown"
+                         class="absolute left-0 mt-2 w-full rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none hidden z-10"
+                         role="menu" aria-orientation="vertical" aria-labelledby="mobile-giris-button" tabindex="-1">
+                        <div class="py-1" role="none">
+                            <a href="/partners/login"
+                               class="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-200" role="menuitem" tabindex="-1">
+                                Partner Girişi
+                            </a>
+                            <a href="/ortaks/login"
+                               class="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-200" role="menuitem" tabindex="-1">
+                                Ortak Girişi
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Main Content -->
+<main class="mx-auto max-w-7xl px-6 lg:px-8 py-12">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+
+        <!-- Left Side - Content -->
+        <div class="space-y-8">
+            <div>
+                <h1 class="text-4xl font-bold text-gray-900 mb-4">
+                    İşinizi Büyütmek İçin
+                    <span class="text-indigo-600 block">Doğru Adrestesiniz</span>
+                </h1>
+                <p class="text-lg text-gray-600 leading-relaxed">
+                    Dijital dönüşüm yolculuğunuzda size rehberlik ediyoruz.
+                    Modern çözümlerle işinizi bir üst seviyeye taşıyın.
+                </p>
+            </div>
+
+            <div class="space-y-6">
+                <div class="flex items-start space-x-4">
+                    <div class="flex-shrink-0">
+                        <svg class="h-6 w-6 text-green-500" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                             stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                  d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold text-gray-900">Hızlı Entegrasyon</h3>
+                        <p class="text-gray-600">Mevcut sistemlerinizle sorunsuz entegrasyon</p>
+                    </div>
+                </div>
+
+                <div class="flex items-start space-x-4">
+                    <div class="flex-shrink-0">
+                        <svg class="h-6 w-6 text-green-500" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                             stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                  d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold text-gray-900">7/24 Destek</h3>
+                        <p class="text-gray-600">Uzman ekibimiz her zaman yanınızda</p>
+                    </div>
+                </div>
+
+                <div class="flex items-start space-x-4">
+                    <div class="flex-shrink-0">
+                        <svg class="h-6 w-6 text-green-500" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                             stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                  d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold text-gray-900">Ölçeklenebilir Çözümler</h3>
+                        <p class="text-gray-600">İşinizin büyümesine uyum sağlayan teknoloji</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Side - Form -->
+        <div class="bg-white rounded-2xl shadow-xl p-8">
+            <div class="mb-8">
+                <h2 class="text-2xl font-bold text-gray-900 mb-2">Başvuru Formu</h2>
+            </div>
+
+            <form id="application-form" class="space-y-6">
+                <!-- Ad Soyad -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label for="firstName" class="block text-sm font-medium text-gray-900 mb-2">
+                            <svg class="inline h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                                 stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                      d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"/>
+                            </svg>
+                            Ad*
+                        </label>
+                        <input
+                                type="text"
+                                name="firstName"
+                                id="firstName"
+                                required
+                                class="block w-full rounded-lg border-gray-300 px-4 py-3 text-gray-900 placeholder-gray-400 focus:border-indigo-500 focus:ring-indigo-500 transition-colors border"
+                        />
+                    </div>
+
+                    <div>
+                        <label for="lastName" class="block text-sm font-medium text-gray-900 mb-2">
+                            <svg class="inline h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                                 stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                      d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"/>
+                            </svg>
+                            Soyad*
+                        </label>
+                        <input
+                                type="text"
+                                name="lastName"
+                                id="lastName"
+                                required
+                                class="block w-full rounded-lg border-gray-300 px-4 py-3 text-gray-900 placeholder-gray-400 focus:border-indigo-500 focus:ring-indigo-500 transition-colors border"
+                        />
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label for="tcNo" class="block text-sm font-medium text-gray-900 mb-2">
+                            <svg class="inline h-4 w-4 mr-1" viewBox="0 -0.5 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                                <g id="SVGRepo_iconCarrier">
+                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                          d="M3.5 7V17C3.5 18.1046 4.39543 19 5.5 19H19.5C20.6046 19 21.5 18.1046 21.5 17V7C21.5 5.89543 20.6046 5 19.5 5H5.5C4.39543 5 3.5 5.89543 3.5 7Z"
+                                          stroke="#000000" stroke-width="1.5" stroke-linecap="round"
+                                          stroke-linejoin="round"></path>
+                                    <path d="M15.5 10H18.5" stroke="#000000" stroke-width="1.5"
+                                          stroke-linecap="round"></path>
+                                    <path d="M15.5 13H18.5" stroke="#000000" stroke-width="1.5"
+                                          stroke-linecap="round"></path>
+                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                          d="M11.5 10C11.5 11.1046 10.6046 12 9.5 12C8.39543 12 7.5 11.1046 7.5 10C7.5 8.89543 8.39543 8 9.5 8C10.0304 8 10.5391 8.21071 10.9142 8.58579C11.2893 8.96086 11.5 9.46957 11.5 10Z"
+                                          stroke="#000000" stroke-width="1.5" stroke-linecap="round"
+                                          stroke-linejoin="round"></path>
+                                    <path d="M5.5 16C8.283 12.863 11.552 13.849 13.5 16" stroke="#000000"
+                                          stroke-width="1.5" stroke-linecap="round"></path>
+                                </g>
+                            </svg>
+                            TC Kimlik No*
+                        </label>
+                        <input
+                                type="text"
+                                name="tcNo"
+                                id="tcNo"
+                                required
+                                class="block w-full rounded-lg border-gray-300 px-4 py-3 text-gray-900 placeholder-gray-400 focus:border-indigo-500 focus:ring-indigo-500 transition-colors border"
+                        />
+                    </div>
+
+                    <div>
+                        <label for="phone" class="block text-sm font-medium text-gray-900 mb-2">
+                            <svg class="inline w-4 h-4 mr-1" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                                <g id="SVGRepo_iconCarrier">
+                                    <path d="M12 18H12.012M6 5L6 19C6 20.1046 6.89543 21 8 21H16C17.1046 21 18 20.1046 18 19L18 5C18 3.89543 17.1046 3 16 3L8 3C6.89543 3 6 3.89543 6 5Z"
+                                          stroke="#000000" stroke-width="2" stroke-linecap="round"
+                                          stroke-linejoin="round"></path>
+                                </g>
+                            </svg>
+                            Telefon No*
+                        </label>
+                        <input
+                                type="tel"
+                                name="phone"
+                                id="phone"
+                                class="block w-full rounded-lg border-gray-300 px-4 py-3 text-gray-900 placeholder-gray-400 focus:border-indigo-500 focus:ring-indigo-500 transition-colors border"
+                                pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
+                        />
+                    </div>
+                </div>
+
+                <div>
+                    <label for="email" class="block text-sm font-medium text-gray-900 mb-2">
+                        <svg class="inline h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                             stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                  d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/>
+                        </svg>
+                        E-posta*
+                    </label>
+                    <input
+                            type="email"
+                            name="email"
+                            id="email"
+                            required
+                            class="block w-full rounded-lg border-gray-300 px-4 py-3 text-gray-900 placeholder-gray-400 focus:border-indigo-500 focus:ring-indigo-500 transition-colors border"
+                    />
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label for="city" class="block text-sm font-medium text-gray-900 mb-2">
+                            <svg class="inline-block align-text-bottom h-4 w-4 mr-2" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                                <g id="SVGRepo_iconCarrier">
+                                    <path d="M12 21C15.5 17.4 19 14.1764 19 10.2C19 6.22355 15.866 3 12 3C8.13401 3 5 6.22355 5 10.2C5 14.1764 8.5 17.4 12 21Z"
+                                          stroke="#000000" stroke-width="2" stroke-linecap="round"
+                                          stroke-linejoin="round"></path>
+                                    <path d="M12 13C13.6569 13 15 11.6569 15 10C15 8.34315 13.6569 7 12 7C10.3431 7 9 8.34315 9 10C9 11.6569 10.3431 13 12 13Z"
+                                          stroke="#000000" stroke-width="2" stroke-linecap="round"
+                                          stroke-linejoin="round"></path>
+                                </g>
+                            </svg>
+                            Şehir Seçiniz*
+                        </label>
+                        <select
+                                name="city"
+                                id="city"
+                                required
+                                class="block w-full rounded-lg border-gray-300 px-4 py-3 text-gray-900 focus:border-indigo-500 focus:ring-indigo-500 transition-colors border"
+                        >
+                            <option value="">Seçiniz</option>
+                            <option value="turkiye">Türkiye</option>
+                            <option value="ingiltere">İngiltere</option>
+                            <option value="almanya">Almanya</option>
+                            <option value="diger">Diğer</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label for="funder" class="block text-sm font-medium text-gray-900 mb-2">
+                            <svg class="inline-block align-text-bottom w-4 h-4 mr-2" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                                <g id="SVGRepo_iconCarrier">
+                                    <rect width="48" height="48" fill="white" fill-opacity="0.01"></rect>
+                                    <ellipse cx="14" cy="10" rx="10" ry="5" stroke="#000000" stroke-width="4"
+                                             stroke-linecap="round" stroke-linejoin="round"></ellipse>
+                                    <path d="M4 10C4 10 4 14.2386 4 17C4 19.7614 8.47715 22 14 22C19.5228 22 24 19.7614 24 17C24 15.3644 24 10 24 10"
+                                          stroke="#000000" stroke-width="4" stroke-linecap="round"
+                                          stroke-linejoin="round"></path>
+                                    <path d="M4 17C4 17 4 21.2386 4 24C4 26.7614 8.47715 29 14 29C19.5228 29 24 26.7614 24 24C24 22.3644 24 17 24 17"
+                                          stroke="#000000" stroke-width="4" stroke-linecap="round"
+                                          stroke-linejoin="round"></path>
+                                    <path d="M4 24C4 24 4 28.2386 4 31C4 33.7614 8.47715 36 14 36C19.5228 36 24 33.7614 24 31C24 29.3644 24 24 24 24"
+                                          stroke="#000000" stroke-width="4" stroke-linecap="round"
+                                          stroke-linejoin="round"></path>
+                                    <path d="M4 31C4 31 4 35.2386 4 38C4 40.7614 8.47715 43 14 43C19.5228 43 24 40.7614 24 38C24 36.3644 24 31 24 31"
+                                          stroke="#000000" stroke-width="4" stroke-linecap="round"
+                                          stroke-linejoin="round"></path>
+                                    <ellipse cx="34" cy="24" rx="10" ry="5" stroke="#000000" stroke-width="4"
+                                             stroke-linecap="round" stroke-linejoin="round"></ellipse>
+                                    <path d="M24 24C24 24 24 28.2386 24 31C24 33.7614 28.4772 36 34 36C39.5228 36 44 33.7614 44 31C44 29.3644 44 24 44 24"
+                                          stroke="#000000" stroke-width="4" stroke-linecap="round"
+                                          stroke-linejoin="round"></path>
+                                    <path d="M24 31C24 31 24 35.2386 24 38C24 40.7614 28.4772 43 34 43C39.5228 43 44 40.7614 44 38C44 36.3644 44 31 44 31"
+                                          stroke="#000000" stroke-width="4" stroke-linecap="round"
+                                          stroke-linejoin="round"></path>
+                                </g>
+                            </svg>
+                            Yatırımcı Mısınız?*
+                        </label>
+                        <select
+                                name="funder"
+                                id="funder"
+                                required
+                                class="block w-full rounded-lg border-gray-300 px-4 py-3 text-gray-900 focus:border-indigo-500 focus:ring-indigo-500 transition-colors border"
+                        >
+                            <option value="">Seçiniz</option>
+                            <option value="crm">CRM Çözümleri</option>
+                            <option value="erp">ERP Sistemleri</option>
+                            <option value="ecommerce">E-Ticaret</option>
+                            <option value="analytics">Analitik Araçları</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Mesaj -->
+                <div>
+                    <label for="message" class="block text-sm font-medium text-gray-900 mb-2">
+                        <svg class="inline h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                             stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                  d="M8.625 12a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375M21 12c0 4.556-4.03 8.25-9 8.25a9.764 9.764 0 01-2.555-.337A5.972 5.972 0 015.41 20.97a5.969 5.969 0 01-.474-.065 4.48 4.48 0 00.978-2.025c.09-.457-.133-.901-.467-1.226C3.93 16.178 3 14.189 3 12c0-4.556 4.03-8.25 9-8.25s9 3.694 9 8.25z"/>
+                        </svg>
+                        Mesajınız
+                    </label>
+                    <textarea
+                            name="message"
+                            id="message"
+                            rows="4"
+                            class="block w-full rounded-lg border-gray-300 px-4 py-3 text-gray-900 placeholder-gray-400 focus:border-indigo-500 focus:ring-indigo-500 transition-colors resize-none border"
+                            placeholder="Mesaj"
+                    ></textarea>
+                </div>
+
+                <!-- Submit Button -->
+                <button
+                        type="submit"
+                        class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                >
+                    Başvuru Yap
+                </button>
+            </form>
+
+            <div class="mt-6 text-center">
+                <p class="text-sm text-gray-500">
+                    Başvurunuzu aldıktan sonra 24 saat içinde size dönüş yapacağız.
+                </p>
+            </div>
+        </div>
+    </div>
+</main>
+<script src = "../../src/nav_dropdown.js"></script>
+<script>
+    // Mobile menu toggle
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const menuIcon = document.getElementById('menu-icon');
+    const closeIcon = document.getElementById('close-icon');
+
+    mobileMenuButton.addEventListener('click', function () {
+        const isHidden = mobileMenu.classList.contains('hidden');
+
+        if (isHidden) {
+            mobileMenu.classList.remove('hidden');
+            menuIcon.classList.add('hidden');
+            closeIcon.classList.remove('hidden');
+        } else {
+            mobileMenu.classList.add('hidden');
+            menuIcon.classList.remove('hidden');
+            closeIcon.classList.add('hidden');
+        }
+    });
+
+    // Form submission
+    document.getElementById('application-form').addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        // Form verilerini topla
+        const formData = new FormData(this);
+        const data = Object.fromEntries(formData);
+
+        // Console'a yazdır (gerçek uygulamada API'ye gönderilir)
+        console.log('Form verileri:', data);
+
+        // Başarı mesajı göster
+        alert('Başvurunuz başarıyla gönderildi! En kısa sürede size dönüş yapacağız.');
+
+        // Formu temizle
+        this.reset();
+    });
+
+    // Form validasyonu için basit kontroller
+    const requiredFields = document.querySelectorAll('input[required], select[required]');
+
+    requiredFields.forEach(field => {
+        field.addEventListener('blur', function () {
+            if (!this.value.trim()) {
+                this.classList.add('border-red-500');
+                this.classList.remove('border-gray-300');
+            } else {
+                this.classList.remove('border-red-500');
+                this.classList.add('border-gray-300');
+            }
+        });
+    });
+
+    document.getElementById('phone').addEventListener('input', function(e) {
+        let className = e.target.className;
+        let value = e.target.value.replace(/\D/g, '');
+        let formattedValue = '';
+
+        if (value.length >= 1) {
+            formattedValue = '(' + value.substring(0, 3);
+        }
+        if (value.length >= 4) {
+            formattedValue += ') ' + value.substring(3, 6);
+        }
+        if (value.length >= 7) {
+            formattedValue += '-' + value.substring(6, 10);
+        }
+
+        e.target.value = formattedValue;
+
+        if (value.length === 10) {
+            e.target.className = className + 'valid';
+        } else {
+            e.target.className = className;
+        }
+    });
+</script>
+</body>
+</html>

@@ -3,14 +3,15 @@ const defaultTheme = require('tailwindcss/defaultTheme')
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
-    "./index.html",
-    "./*.html",
     "./src/**/*.{js,ts,jsx,tsx,vue,svelte}",
+    "./index.html",
+    "./partners/**/*.html",
+    "./ortaks/**/*.html",
   ],
   theme: {
     extend: {
       fontFamily: {
-        'sans': ['Inter', ...defaultTheme.fontFamily.sans],
+        'sans': ['Poppins', ...defaultTheme.fontFamily.sans],
       },
     },
   },
