@@ -7,6 +7,8 @@ module.exports = {
     "./index.html",
     "./partners/**/*.html",
     "./ortaks/**/*.html",
+    "./dashboard/**/*.html",
+    "./dashboard/*.html",
   ],
   theme: {
     extend: {

@@ -1,80 +1,276 @@
-<!doctype html>
-<html lang="tr">
+<!DOCTYPE html>
+<html lang="tr" class="h-full bg-gradient-to-br from-slate-50 to-slate-100">
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Tamamliyo - Partner Girişi</title>
-    <link rel="stylesheet" href="../../src/output.css">
+    <title>Yönetim Paneli</title>
+    <link rel="stylesheet" href="../src/output.css">
+    <style>
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+        .slide-down {
+            animation: slideDown 0.3s ease-out;
+        }
 
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .nav-item {
+            transition: all 0.2s ease-in-out;
+        }
+
+        .nav-item:hover {
+            transform: translateX(4px);
+        }
+
+        .submenu-item {
+            transition: all 0.2s ease-in-out;
+        }
+
+        .submenu-item:hover {
+            transform: translateX(2px);
+        }
+
+        .profile-section {
+            transition: all 0.2s ease-in-out;
+        }
+
+        .profile-section:hover {
+            background: rgba(139, 92, 246, 0.05);
+        }
+
+        .settings-btn {
+            transition: all 0.2s ease-in-out;
+        }
+
+        .settings-btn:hover {
+            transform: rotate(90deg);
+            color: #8b5cf6;
+        }
+    </style>
+    <script src="/dashboard/js/dashboard.js" defer></script>
+    <script src="https://unpkg.com/imask"></script>
 </head>
-<body class="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex flex-col items-center justify-center p-4">
+<body class="h-full">
 
-<div class="mb-8">
-    <a href="/" class="group -m-1.5 p-1.5 flex items-center space-x-3 transition-all duration-200 hover:scale-105">
-        <svg class="h-10 w-10 text-indigo-600 group-hover:text-indigo-700 transition-colors" fill="none"
-             viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round"
-                  d="M7 21V4a1 1 0 011-1h8a1 1 0 011 1v17M7 21h10M9 14h6M9 10h6"/>
-        </svg>
-        <span class="text-3xl font-bold text-gray-900 group-hover:text-indigo-600 transition-colors">
-                tamamliyo
-            </span>
-    </a>
-</div>
-
-<div class="w-full max-w-md bg-white rounded-2xl shadow-xl overflow-hidden">
-    <div class="px-8 py-10">
-        <div class="text-center mb-8">
-            <h1 class="text-2xl font-bold text-gray-800">Giriş Yap</h1>
+<div class="flex h-screen bg-gradient-to-br from-slate-50 to-slate-100">
+    <!-- Sidebar -->
+    <aside class="flex w-64 flex-col border-r border-slate-200/50 glass-effect shadow-xl">
+        <!-- Logo/Brand Section -->
+        <div class="px-6 py-6 border-b border-slate-200/50">
+            <div class="flex items-center space-x-3">
+                <div class="w-10 h-10 bg-gradient-to-br from-violet-500 to-purple-600 rounded-xl flex items-center justify-center shadow-lg">
+                    <svg class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                    </svg>
+                </div>
+                <div>
+                    <h1 class="text-lg font-bold text-slate-800">AdminPanel</h1>
+                    <p class="text-xs text-slate-500">Yönetim Sistemi</p>
+                </div>
+            </div>
         </div>
 
-        <form id="partner_giris" class="space-y-6">
-            <div class="space-y-2">
-                <label for="email" class="block text-sm font-medium text-gray-700">
-                    E-posta Adresi
-                </label>
-                <div class="relative">
-                    <input type="email" id="email" name="email" required
-                           class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all duration-200 placeholder-gray-400"
-                           placeholder=""/>
+        <!-- Navigation -->
+        <nav class="flex-1 space-y-2 px-4 py-6">
+            <a data-page="/genel/index.html" href="#" class="load-content-btn nav-item group flex items-center rounded-xl bg-gradient-to-r from-violet-500 to-purple-600 px-4 py-3 text-sm font-semibold text-white shadow-lg">
+                <svg class="mr-3 h-5 w-5 shrink-0" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h7.5"/>
+                </svg>
+                Dashboard
+            </a>
+
+            <div>
+                <button id="create-menu-button" type="button" class="nav-item group flex w-full items-center rounded-xl px-4 py-3 text-sm font-medium text-slate-700 transition-all duration-200 hover:bg-slate-100/80 hover:text-slate-900 hover:shadow-md">
+                    <svg class="mr-3 h-5 w-5 shrink-0 text-slate-500 group-hover:text-violet-600" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    Oluştur
+                    <svg id="chevron-icon" class="ml-auto h-4 w-4 shrink-0 text-slate-400 transition-transform duration-300" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 011.06 0L10 11.94l3.72-3.72a.75.75 0 111.06 1.06l-4.25 4.25a.75.75 0 01-1.06 0L5.22 9.28a.75.75 0 010-1.06z" clip-rule="evenodd" />
+                    </svg>
+                </button>
+                <div id="create-submenu" class="overflow-hidden max-h-0 opacity-0 pl-8 transition-all duration-300 ease-in-out">
+                    <div class="mt-2 space-y-1">
+                        <a data-page="/create/ortaks/index.html" href="#" class="load-content-btn submenu-item block rounded-lg px-4 py-2 text-sm font-medium text-slate-600 transition-all duration-150 hover:bg-gradient-to-r hover:from-violet-50 hover:to-purple-50 hover:text-violet-700 hover:shadow-sm">
+                            <svg class="inline-block w-4 h-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                            </svg>
+                            Ortak Oluştur
+                        </a>
+                        <a data-page="/create/partners/index.html" href="#" class="load-content-btn submenu-item block rounded-lg px-4 py-2 text-sm font-medium text-slate-600 transition-all duration-150 hover:bg-gradient-to-r hover:from-violet-50 hover:to-purple-50 hover:text-violet-700 hover:shadow-sm">
+                            <svg class="inline-block w-4 h-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2-2v2m8 0V6a2 2 0 012 2v6a2 2 0 01-2 2H6a2 2 0 01-2-2V8a2 2 0 012-2V6m8 0H8" />
+                            </svg>
+                            Partner Oluştur
+                        </a>
+                    </div>
                 </div>
             </div>
 
-            <div class="space-y-2">
-                <label for="password" class="block text-sm font-medium text-gray-700">
-                    Şifre
-                </label>
-                <div class="relative">
-                    <input type="password" id="password" name="password" required
-                           class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all duration-200 placeholder-gray-400"
-                           placeholder=""/>
-                </div>
-            </div>
+            <!-- Additional Nav Items -->
+            <a href="#" class="nav-item group flex items-center rounded-xl px-4 py-3 text-sm font-medium text-slate-700 transition-all duration-200 hover:bg-slate-100/80 hover:text-slate-900 hover:shadow-md">
+                <svg class="mr-3 h-5 w-5 shrink-0 text-slate-500 group-hover:text-violet-600" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h3.75M9 15h3.75M9 18h3.75m3 .75H18a2.25 2.25 0 002.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 00-1.123-.08m-5.801 0c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 00.75-.75 2.25 2.25 0 00-.1-.664m-5.8 0A2.251 2.251 0 0113.5 2.25H15c1.012 0 1.867.668 2.15 1.586m-5.8 0c-.376.023-.75.05-1.124.08C9.095 4.01 8.25 4.973 8.25 6.108V8.25m0 0H4.875c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V9.375c0-.621-.504-1.125-1.125-1.125H8.25zM6.75 12h.008v.008H6.75V12zm0 3h.008v.008H6.75V15zm0 3h.008v.008H6.75V18z" />
+                </svg>
+                Raporlar
+            </a>
 
+            <a href="#" class="nav-item group flex items-center rounded-xl px-4 py-3 text-sm font-medium text-slate-700 transition-all duration-200 hover:bg-slate-100/80 hover:text-slate-900 hover:shadow-md">
+                <svg class="mr-3 h-5 w-5 shrink-0 text-slate-500 group-hover:text-violet-600" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 018.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0111.964-3.07M12 6.375a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zm8.25 2.25a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z" />
+                </svg>
+                Kullanıcılar
+            </a>
+        </nav>
+
+        <!-- Profile Section -->
+        <div class="border-t border-slate-200/50 p-4">
             <div class="flex items-center justify-between">
-                <div class="flex items-center">
-                    <input id="remember" name="remember" type="checkbox"
-                           class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded"/>
-                    <label for="remember" class="ml-2 block text-sm text-gray-800">
-                        Beni hatırla
-                    </label>
+                <!-- User Profile -->
+                <div class="profile-section flex items-center space-x-3 rounded-xl px-3 py-2 cursor-pointer">
+                    <div class="relative">
+                        <img class="h-10 w-10 rounded-full ring-2 ring-violet-500/20" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="User Avatar">
+                        <div class="absolute -bottom-0.5 -right-0.5 h-3 w-3 bg-green-400 rounded-full ring-2 ring-white"></div>
+                    </div>
+                    <div class="min-w-0 flex-1">
+                        <p class="text-sm font-semibold text-slate-800 truncate">Ahmet Yılmaz</p>
+                        <p class="text-xs text-slate-500 truncate">Admin</p>
+                    </div>
                 </div>
-                <a href="#" class="text-sm text-indigo-600 hover:text-indigo-800 transition-colors duration-200">
-                    Şifremi unuttum
-                </a>
-            </div>
 
-            <button type="submit"
-                    class="w-full bg-gradient-to-r from-indigo-600 to-blue-700 text-white py-3 px-4 rounded-lg font-semibold hover:from-indigo-700 hover:to-blue-800 focus:ring-4 focus:ring-indigo-200 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5">
-                Giriş Yap
-            </button>
-        </form>
+                <!-- Settings Button -->
+                <button class="settings-btn p-2 rounded-lg text-slate-400 hover:bg-slate-100/50 hover:text-violet-600">
+                    <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="flex flex-1 flex-col overflow-hidden">
+        <!-- Header -->
+        <header class="glass-effect shadow-sm border-b border-slate-200/50">
+            <div class="mx-auto max-w-7xl px-6 py-4">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <h1 class="text-xl font-bold text-slate-900">Dashboard</h1>
+                        <p class="text-sm text-slate-500 mt-1">Hoş geldiniz, sisteminizi yönetin</p>
+                    </div>
+                    <div class="flex items-center space-x-4">
+                        <div class="relative">
+                            <input type="text" placeholder="Ara..." class="w-64 pl-4 pr-4 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-violet-500 focus:border-transparent">
+                        </div>
+                        <button class="p-2 rounded-lg text-slate-400 hover:bg-slate-100 hover:text-slate-600">
+                            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M15.7955 15.8111L21 21M18 10.5C18 14.6421 14.6421 18 10.5 18C6.35786 18 3 14.6421 3 10.5C3 6.35786 6.35786 3 10.5 3C14.6421 3 18 6.35786 18 10.5Z" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content Area -->
+        <main id="main-content" class="flex-1 overflow-y-auto p-6">
+            <div class="max-w-7xl mx-auto">
+                <!-- Stats Cards -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                    <div class="bg-white rounded-xl p-6 shadow-sm border border-slate-200/50 hover:shadow-md transition-shadow">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-sm font-medium text-slate-600">Toplam Kullanıcı</p>
+                                <p class="text-2xl font-bold text-slate-900 mt-1">1,234</p>
+                            </div>
+                            <div class="w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-lg flex items-center justify-center">
+                                <svg class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197m13.5-9a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z" />
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-xl p-6 shadow-sm border border-slate-200/50 hover:shadow-md transition-shadow">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-sm font-medium text-slate-600">Aktif Projeler</p>
+                                <p class="text-2xl font-bold text-slate-900 mt-1">56</p>
+                            </div>
+                            <div class="w-12 h-12 bg-gradient-to-br from-green-500 to-green-600 rounded-lg flex items-center justify-center">
+                                <svg class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-xl p-6 shadow-sm border border-slate-200/50 hover:shadow-md transition-shadow">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-sm font-medium text-slate-600">Aylık Gelir</p>
+                                <p class="text-2xl font-bold text-slate-900 mt-1">₺45,678</p>
+                            </div>
+                            <div class="w-12 h-12 bg-gradient-to-br from-purple-500 to-purple-600 rounded-lg flex items-center justify-center">
+                                <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+                                     stroke="#ffffff">
+                                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                                    <g id="SVGRepo_iconCarrier">
+                                        <path d="M18 8.5V8.35417C18 6.50171 16.4983 5 14.6458 5H9.5C7.567 5 6 6.567 6 8.5C6 10.433 7.567 12 9.5 12H14.5C16.433 12 18 13.567 18 15.5C18 17.433 16.433 19 14.5 19H9.42708C7.53436 19 6 17.4656 6 15.5729V15.5M12 3V21"
+                                              stroke="#ffffff" stroke-width="2" stroke-linecap="round"
+                                              stroke-linejoin="round"></path>
+                                    </g>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-xl p-6 shadow-sm border border-slate-200/50 hover:shadow-md transition-shadow">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-sm font-medium text-slate-600">Bekleyen Görevler</p>
+                                <p class="text-2xl font-bold text-slate-900 mt-1">23</p>
+                            </div>
+                            <div class="w-12 h-12 bg-gradient-to-br from-orange-500 to-orange-600 rounded-lg flex items-center justify-center">
+                                <svg class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Main Content Card -->
+                <div class="bg-white rounded-xl p-8 shadow-sm border border-slate-200/50">
+                    <div class="text-center py-16">
+                        <div class="w-16 h-16 bg-gradient-to-br from-violet-500 to-purple-600 rounded-full mx-auto mb-4 flex items-center justify-center">
+                            <svg class="w-8 h-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-semibold text-slate-900 mb-2">Dashboard İçeriği</h3>
+                        <p class="text-slate-600 max-w-md mx-auto">Buraya dashboard'unuzun ana içeriği gelecek. Grafikleri, tabloları ve diğer bileşenleri ekleyebilirsiniz.</p>
+                    </div>
+                </div>
+            </div>
+        </main>
     </div>
 </div>
-<script src="../../src/partner_giris.js"></script>
+
+<script src="/dashboard/js/dashboard_check.js"></script>
+
 </body>
 </html>
