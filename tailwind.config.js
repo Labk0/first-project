@@ -5,10 +5,9 @@ module.exports = {
   content: [
     "./src/**/*.{js,ts,jsx,tsx,vue,svelte}",
     "./index.html",
-    "./partners/**/*.html",
-    "./ortaks/**/*.html",
-    "./dashboard/**/*.html",
     "./dashboard/*.html",
+    "./dashboard/**/**/*.html",
+    "./basvur/**/*.html",
   ],
   theme: {
     extend: {

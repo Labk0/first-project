@@ -18,10 +18,10 @@ const API_URL = "http://localhost:8000";
             // Eğer sunucu 401 (Unauthorized) veya başka bir hata dönerse,
             // kullanıcıyı login sayfasına yönlendir.
             console.log('Oturum geçerli değil, yönlendiriliyor...');
-            window.location.href = '../login'; // Login sayfanızın adı
+            window.location.href = '/dashboard/login'; // Login sayfanızın adı
         }
     } catch (error) {
         console.error('Kimlik kontrolü sırasında hata:', error);
-        window.location.href = '../login'; // Hata durumunda da login'e yönlendir
+        window.location.href = '/dashboard/login'; // Hata durumunda da login'e yönlendir
     }
 })();

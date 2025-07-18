@@ -126,16 +126,13 @@ document.addEventListener('DOMContentLoaded', function () {
                 // Sadece rakamlar kalır (Örn: "5321234567")
                 const purePhoneNumber = data.phone.replace(/\D/g, '');
 
-                // 3. Senin istediğin özel "xxx-xx-xxxx" formatına göre numarayı dilimle
-                const part1 = purePhoneNumber.slice(0, 3); // ilk 3 hane (Örn: "532")
-                const part2 = purePhoneNumber.slice(3, 5); // sonraki 2 hane (Örn: "12")
-                const part3 = purePhoneNumber.slice(5, 9); // son 4 hane (Örn: "4567")
-
-                // 4. Tüm parçaları istenen formatta birleştir
-                const formattedPhone = `${countryCode}-${part1}-${part2}-${part3}`; // Örn: "+90-532-12-4567"
+                // 3. Senin istediğin özel "xxx-xxx-xxxx" formatına göre numarayı dilimle
+                const part1 = purePhoneNumber.slice(0, 3); // ilk 3 hane
+                const part2 = purePhoneNumber.slice(3, 6); // sonraki 3 hane
+                const part3 = purePhoneNumber.slice(6, 10); // son 4 hane
 
                 // 5. Orijinal data objesini, sadece bu yeni formatlanmış telefon numarasını içerecek şekilde güncelle
-                data.phone = formattedPhone;
+                data.phone = `${countryCode}-${part1}-${part2}-${part3}`;
                 delete data.country_code; // Artık buna ihtiyacımız yok
             }
 
